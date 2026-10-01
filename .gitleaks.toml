@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Recovery state identifiers that resemble Vault tokens"
+rules = ["vault-service-token"]
+paths = ['''kalshi-suite[\\/]internal[\\/]server[\\/]r148_staged_bundle_runtime\.go''']

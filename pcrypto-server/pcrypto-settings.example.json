@@ -1,0 +1,16 @@
+{
+  "bankroll": 1000,
+  "stake_pct": 0.02,
+  "min_entry": 0.55,
+  "max_entry": 0.8,
+  "solo_min_entry": 0.7,
+  "min_conf": 0.55,
+  "maker_share": 0.5,
+  "cross_confirm_x": 2,
+  "kelly": true,
+  "kelly_mult": 0.5,
+  "kelly_cap": 0.03,
+  "max_exposure": 0.95,
+  "no_edge_floor": true,
+  "saved": false
+}

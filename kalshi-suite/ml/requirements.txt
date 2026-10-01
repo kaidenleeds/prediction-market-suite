@@ -1,0 +1,5 @@
+# ML edge-scorer (live_ml.py) dependencies. Install on the server with:
+#   pip3 install -r requirements.txt --break-system-packages
+scikit-learn
+numpy
+xgboost==3.3.0

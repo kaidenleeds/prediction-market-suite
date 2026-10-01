@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediction Market Suite — Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="mark">PM</span>
+      <div>
+        <strong>Prediction Market Suite</strong>
+        <span>Local demo</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="pill safe"><i></i> Synthetic data</span>
+      <span class="pill"><i></i> Paper only</span>
+      <button id="stepButton" class="button secondary">Run one step</button>
+      <button id="pauseButton" class="button">Pause</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro panel">
+      <div>
+        <p class="eyebrow">SAFE FIRST RUN</p>
+        <h1>See the full decision flow without an exchange account.</h1>
+        <p class="lede">This demo reads sample markets from SQLite, finds possible price gaps, checks them, and records paper trades. Prices move every few seconds so the dashboard stays active.</p>
+      </div>
+      <div class="example">
+        <span class="example-label">Simple example</span>
+        <div class="price-line"><strong>47¢</strong><span>outside estimate</span></div>
+        <div class="price-line cheap"><strong>41¢</strong><span>available YES price</span></div>
+        <p>A 6¢ gap enters the checks. Fees, available size, and limits decide whether the paper trade is recorded.</p>
+      </div>
+    </section>
+
+    <section class="flow panel" aria-label="Decision flow">
+      <div class="flow-step active"><span>1</span><b>Read markets</b><small>prices and size</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step active"><span>2</span><b>Find a signal</b><small>possible gap</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step active"><span>3</span><b>Check the trade</b><small>fees and limits</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step active"><span>4</span><b>Paper fill</b><small>stored in SQLite</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span>5</span><b>Score results</b><small>keep collecting</small></div>
+    </section>
+
+    <section class="metrics">
+      <article class="metric panel"><span>Paper P&amp;L</span><strong id="paperPnl">$0.00</strong><small>sample open positions</small></article>
+      <article class="metric panel"><span>Open paper trades</span><strong id="openTrades">0</strong><small>no real orders</small></article>
+      <article class="metric panel"><span>Signals shown</span><strong id="signalCount">0</strong><small>latest candidates</small></article>
+      <article class="metric panel"><span>Demo clock</span><strong id="tickCount">0</strong><small id="uptime">starting</small></article>
+    </section>
+
+    <section class="grid two-one">
+      <article class="panel table-panel">
+        <div class="panel-head">
+          <div><p class="eyebrow">LIVE SAMPLE FEED</p><h2>Markets</h2></div>
+          <span id="marketPulse" class="pulse">updating</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Market</th><th>Venue</th><th class="num">YES</th><th class="num">Reference</th><th class="num">Gap</th><th class="num">Volume</th></tr></thead>
+            <tbody id="marketRows"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">WHAT THE SUITE DID</p><h2>Recent events</h2></div></div>
+        <div id="eventList" class="event-list"></div>
+      </article>
+    </section>
+
+    <section class="grid split">
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">CANDIDATES</p><h2>Signals</h2></div><span class="muted">A signal still has to pass checks.</span></div>
+        <div id="signalList" class="card-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">SIMULATED EXECUTION</p><h2>Paper trades</h2></div><span class="muted">Uses moving sample prices.</span></div>
+        <div id="tradeList" class="card-list"></div>
+      </article>
+    </section>
+
+    <section class="panel research-panel">
+      <div class="panel-head">
+        <div><p class="eyebrow">RESEARCH CHECK</p><h2>Strategy scorecard</h2></div>
+        <span class="muted">Sample results for the demo</span>
+      </div>
+      <div id="researchGrid" class="research-grid"></div>
+    </section>
+
+    <footer>
+      <span id="connectionState">Connecting to the local demo…</span>
+      <span id="databasePath"></span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

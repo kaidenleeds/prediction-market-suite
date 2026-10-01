@@ -1,0 +1,4 @@
+*.exe
+pcrypto-settings.json
+pcrypto-state.json
+*.log

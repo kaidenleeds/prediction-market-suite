@@ -1,0 +1,18 @@
+{
+  "watch_dir": "..\\kalshi-briefings",
+  "poll_seconds": 15,
+  "channel": "ntfy",
+  "forward_existing_on_start": false,
+  "state_file": "forwarder-state.json",
+  "ntfy": {
+    "server": "https://ntfy.sh",
+    "topic": "CHANGE-ME-to-a-long-random-string-only-you-know"
+  },
+  "telegram": {
+    "bot_token": "",
+    "chat_id": ""
+  },
+  "webhook": {
+    "url": ""
+  }
+}

@@ -1,0 +1,43 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+**/config.json
+**/config.local.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime data
+**/data/
+**/demo-data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite*
+*.log
+*.err
+forwarder/forwarder-config.json
+forwarder/forwarder-state.json
+pcrypto-server/pcrypto-settings.json
+pcrypto-server/pcrypto-state.json
+kalshi-briefings/
+
+# Build output
+*.exe
+*.test
+*.out
+
+# Python
+__pycache__/
+**/.pytest_cache/
+*.py[cod]
+.venv/
+
+# Editors and temporary files
+.idea/
+.vscode/
+*.bak
+*~
+outputs/

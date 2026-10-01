@@ -1,0 +1,27 @@
+[Unit]
+# kalshi-suite — PAPER-ONLY prediction-market autopilot, 24/7 on a Linux server.
+Description=Kalshi Suite (paper autopilot)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+# Where you copied the binary + config.json + ml/ (adjust if you used a different path)
+WorkingDirectory=/home/ubuntu/kalshi-suite
+# -headless = no browser pop; AUTO turns on at startup automatically.
+ExecStart=/home/ubuntu/kalshi-suite/kalshi-suite -headless
+# Optional API keys (only needed for the Kalshi real-time WS / live-sandbox; paper data works without).
+# Uncomment + point at your key files if you use them:
+# Environment=KALSHI_PROD_KEY_ID=...
+# Environment=KALSHI_PROD_KEY_FILE=/home/ubuntu/kalshi-suite/keys/prod.pem
+Restart=always
+RestartSec=5
+# Restart if it ever wedges; the DB is WAL so a hard restart is safe.
+TimeoutStopSec=20
+# Keep logs in the journal: view with `journalctl -u kalshi-suite -f`
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

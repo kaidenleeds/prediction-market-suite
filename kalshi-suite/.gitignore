@@ -1,0 +1,34 @@
+# Compiled binaries
+/kalshi-suite
+/bin/
+*.exe
+
+# Local data & secrets — NEVER commit these
+/data/
+*.db
+*.db-wal
+*.db-shm
+config.local.json
+*.key
+*.pem
+
+# Cross-PC data snapshots — Google Drive carries these, git does NOT (keep only the README)
+/ml/drive-sync/*
+!/ml/drive-sync/README.md
+
+# Environment
+.env
+
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Linux cross-compile output (large binaries)
+/dist/
+
+_once.log
+_o2.log
+_o2.err
+_once.err
+_suite.log
+_suite.err
